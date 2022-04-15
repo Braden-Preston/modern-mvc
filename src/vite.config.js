@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-import FullReload from 'vite-plugin-full-reload'
 
 let resolve = (p) => new URL(p, import.meta.url).pathname;
 
@@ -13,12 +12,9 @@ export default defineConfig({
     outDir: resolve("../public"),
     lib: {
       entry: resolve("./client.js"),
-      name: "app",
+      name: "client",
       fileName: "client",
       formats: ["es"],
     },
-  },
-  plugins: [
-    FullReload(['./**/*'])
-  ]
+  }
 });
