@@ -9,12 +9,13 @@ export default defineConfig({
     port: 3001,
   },
   build: {
+    minify: 'terser',
     outDir: resolve("../public"),
     lib: {
       entry: resolve("./client.js"),
       name: "client",
       fileName: "client",
-      formats: ["es"],
+      formats: ["umd"],
     },
   }
 });

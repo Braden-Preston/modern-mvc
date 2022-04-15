@@ -25,7 +25,15 @@ app.register(fastifyStatic, {
 
 // Declare a route
 app.get('/', (req, res) => {
-  res.view('home')
+  res.view('Home')
+})
+
+app.get('/customers', (req, res) => {
+  res.view('customer/index')
+})
+
+app.get('/customers/clicked', (req, res) => {
+  res.view('customer/clicked')
 })
 
 if (import.meta.env.PROD) {
