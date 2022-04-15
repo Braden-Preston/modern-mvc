@@ -1,4 +1,5 @@
 import './style.css'
+import htmx from 'htmx.org'
 
 
-console.log('tests!')
+console.log('tests', htmx)

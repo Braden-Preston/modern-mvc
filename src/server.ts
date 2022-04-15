@@ -24,7 +24,7 @@ app.register(fastifyStatic, {
 });
 
 // Declare a route
-app.get("/", function (req, res) {
+app.get("/", (req, res) => {
   // res.send({ hello: "world" });
   res.view("home");
 });
