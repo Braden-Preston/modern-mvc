@@ -1,39 +1,29 @@
 import fastify from 'fastify'
-import handlebars from 'handlebars'
-import viewEngine from 'point-of-view'
-import fastifyStatic from 'fastify-static'
+import staticfiles from 'fastify-static'
+import viewrouter from './plugins/fastify-view-router'
+// import viewengine from './plugins/fastify-htm'
 
 let resolve = (p: string) => new URL(p, import.meta.url).pathname
 
 const app = fastify()
 
-app.register(viewEngine, {
-  engine: { handlebars },
-  viewExt: 'hbs',
-  root: './src/views',
-  propertyName: 'view',
-  layout: 'layouts/main.hbs',
-  includeViewExtension: true,
-  defaultContext: {
-    title: 'My Vite Site'
-  }
-})
+app.register(viewrouter)
 
-app.register(fastifyStatic, {
+// app.register(viewengine, {
+//   views: './src/views',
+//   layouts: './src/views/layouts',
+//   templates: './src/components'
+// })
+
+app.register(staticfiles, {
   root: resolve('../public')
 })
 
 // Declare a route
 app.get('/', (req, res) => {
-  res.view('Home')
-})
+  let props = { thing: 'kittens' }
 
-app.get('/customers', (req, res) => {
-  res.view('customer/index')
-})
-
-app.get('/customers/clicked', (req, res) => {
-  res.view('customer/clicked')
+  res.view(props)
 })
 
 if (import.meta.env.PROD) {

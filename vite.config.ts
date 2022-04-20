@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import { VitePluginNode } from 'vite-plugin-node'
+import watchAndRun from '@kitql/vite-plugin-watch-and-run'
 
 /* ------------- API Server Config ------------ */
 
@@ -13,6 +14,10 @@ export default defineConfig({
       appPath: './src/server.ts',
       exportName: 'viteNodeApp',
       tsCompiler: 'esbuild'
-    })
+    }),
+    watchAndRun([{ 
+      watch: '**/routes/**/**.ts',
+      run: 'touch -m src/server.ts'
+    }]),
   ]
 })

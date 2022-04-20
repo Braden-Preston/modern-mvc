@@ -16,5 +16,5 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true
   },
-  "include": ["src"]
+  "include": ["src", "src/routes/customers/_index.js", "src/routes/customers/[id]/[...all].route.ts", "src/routes/[all].route.ts"]
 }

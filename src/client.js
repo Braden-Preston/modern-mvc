@@ -15,5 +15,7 @@ Alpine.plugin(morph)
 window.Alpine = Alpine
 
 
+console.log('client import!')
+
 
 
